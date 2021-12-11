@@ -34,7 +34,7 @@ def answer_two():
             case ['up', x]:
                 aim -= int(x)
     
-    print(f"Answer One: {horizontal_position * depth}")
+    print(f"Answer Two: {horizontal_position * depth}")
 
 if __name__ == '__main__':
     answer_one()
