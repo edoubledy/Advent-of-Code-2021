@@ -1,28 +1,25 @@
-def part_one():
-  with open("./src/day1/data/input") as f:
-    lines = [int(line.strip()) for line in f]
-  
-  ans = 0
-  for i in range(1, len(lines)):
-    if lines[i] > lines[i-1]:
-      ans += 1
+import time
 
-  return ans
+def time_func(func):
+    def wrapper():
+        start = time.time()
+        func()
+        end = time.time()
+        print(func.__name__ + " time (s): " + str(round(end - start, 6)))
+    
+    return wrapper
 
-def part_two():
-  with open("./src/day1/data/input") as f:
-    lines = [int(line.strip()) for line in f]
+@time_func
+def answer_one():
+    with open("./src/day1/data/input") as f:
+        lines = [int(line.strip()) for line in f]
 
-  ans = 0
-  for i in range(0, len(lines)):
-    window = sum(lines[i:i+2])
-    prev_window = sum(lines[i-1:i+1])
+    ans = 0
+    for i in range(1, len(lines)):
+        if lines[i] > lines[i-1]:
+            ans += 1
 
-    if window > prev_window:
-      ans += 1
-
-  return ans
+    print(f"Answer One: {ans}")
 
 if __name__ == '__main__':
-  print("Answer One: " + str(part_one()))
-  print("Answer Two: " + str(part_two()))
+    answer_one()
